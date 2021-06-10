@@ -8,6 +8,18 @@ public class Student {
     private String name;
     private String phoneNumber;
     private String status;
+    private String dateTime;
+
+    public Student() {
+    }
+
+    public Student(Long id, String name, String phoneNumber, String status, String dateTime) {
+        this.id = id;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.status = status;
+        this.dateTime = dateTime;
+    }
 
     public Long getId() {
         return id;
@@ -42,5 +54,11 @@ public class Student {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getDateTime() {
+        return dateTime;
+    }
 
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
 }

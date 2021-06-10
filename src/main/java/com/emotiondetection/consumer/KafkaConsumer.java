@@ -1,5 +1,6 @@
 package com.emotiondetection.consumer;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -35,7 +36,11 @@ public class KafkaConsumer {
         Consumer<String, Student> consumer = consumerFactory.createConsumer();
         try {
             consumer.subscribe(Arrays.asList(ApplicationConstant.TOPIC_NAME));
-            ConsumerRecords<String, Student> consumerRecords = consumer.poll(10000);
+            ConsumerRecords<String, Student> consumerRecords = consumer.poll(Duration.ofSeconds(100l));
+            if(consumerRecords.count()==0){
+                System.out.println("NOOOOOOOOO MSGGGGCOn");
+            }
+//            ConsumerRecords<String, Student> consumerRecords = consumer.poll(10000);
             Iterable<ConsumerRecord<String, Student>> records = consumerRecords.records(ApplicationConstant.TOPIC_NAME);
             Iterator<ConsumerRecord<String, Student>> iterator = records.iterator();
 
